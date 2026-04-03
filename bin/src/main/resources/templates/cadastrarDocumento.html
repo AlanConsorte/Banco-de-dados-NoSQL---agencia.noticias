@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Gerenciador de Documentos Web</title>
+</head>
+<body>
+	<h1>Cadastrar documento</h1>
+
+	<form method="POST" action="cadastrarDocumento">
+		<label>Nome do autor: </label><br>
+		<input type="text" name="autor.nome" /> <br>
+		
+		<label>E-mail do autor: </label><br>
+		<input type="email" name="autor.email" /><br>
+		
+		<label>Data de nascimento do autor: </label> <br>
+		<input type="date" name="autor.dataNascimento" /><br>
+				
+		<label>Nome do documento: </label> <br>
+		<input type="text" name="nome" /><br>
+		
+		<label>Descrição do documento: </label> <br>
+		<textarea name="descricao" rows="3" style="width: 500px"/></textarea><br>
+		
+		<label>Conteúdo do documento: </label> <br>
+		<textarea name="conteudo" rows="10" style="width: 500px"/></textarea><br>
+		
+		<input type="submit" value="cadastrar" />
+	</form>
+</body>
+</html>
+

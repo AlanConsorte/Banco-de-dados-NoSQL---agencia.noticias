@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Gerenciador de Documentos Web</title>
+</head>
+<body>
+	<h1>Documentos cadastrados</h1>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Autor</th>
+			<th>Nome documento</th>
+			<th>Descriçao documento</th>
+			<th>Conteúdo documento</th>
+			<th>Remover</th>			
+		</tr>
+		<tr th:each="doc : ${documentos}">
+        <td th:text="${doc.id}"></td>
+        <td th:text="${doc.autor.nome}"></td>
+        <td th:text="${doc.nome}"></td>
+        <td th:text="${doc.descricao}"></td>
+        <td th:text="${doc.conteudo}"></td>
+        <td><a th:href="@{removerDocumento(idDocumento=${doc.id})}"> remover</td>
+      </tr>
+	</table>
+</body>
+</html>
+

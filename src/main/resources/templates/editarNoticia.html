@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Agencia de Notícias Web</title>
+</head>
+<body>
+	<h1>Editar notícia</h1>
+
+	<form method="POST" th:action="@{editarNoticia(idNoticia=${noticia.id})}">
+		<input type="hidden" name="id" th:value="${noticia.id}" >
+		<label>Nome do autor: </label><br>
+		<input type="text" name="autor.nome" th:value="${noticia.autor.nome}" /> <br>
+		
+		<label>E-mail do autor: </label><br>
+		<input type="email" name="autor.email" /><br>
+		
+		<label>Data de nascimento do autor: </label> <br>
+		<input type="date" name="autor.dataNascimento" /><br>
+				
+		<label>título: </label> <br>
+		<input type="text" name="titulo" /><br>
+		
+		<label>Assunto: </label> <br>
+		<input type="text" name="assunto" /><br>
+		
+		<label>Conteúdo da notícia: </label> <br>
+		<textarea name="conteudo" rows="10" style="width: 500px"/></textarea><br>
+		
+		<input type="submit" value="cadastrar" />
+	</form>
+</body>
+</html>
+

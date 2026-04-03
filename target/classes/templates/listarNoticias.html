@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Agencia de Notícias Web</title>
+</head>
+<body>
+	<h1>Notícias cadastradas</h1>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Autor</th>
+			<th>Título</th>
+			<th>Assunto</th>
+			<th>Conteúdo</th>
+			<th>Remover</th>	
+			<th>editar</th>			
+		</tr>
+		<tr th:each="doc : ${noticias}">
+	        <td th:text="${doc.id}"></td>
+	        <td th:text="${doc.autor.nome}"></td>
+	        <td th:text="${doc.titulo}"></td>
+	        <td th:text="${doc.assunto}"></td>
+	        <td th:text="${doc.conteudo}"></td>
+	        <td><a th:href="@{removerNoticia(idDocumento=${doc.id})}"> remover</td>
+	        <td><a th:href="@{editarNoticia(idNoticia=${doc.id})}"> editar</td>
+      </tr>
+	</table>
+</body>
+</html>
+
