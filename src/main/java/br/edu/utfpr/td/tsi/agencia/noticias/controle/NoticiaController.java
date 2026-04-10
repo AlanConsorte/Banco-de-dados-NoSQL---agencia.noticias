@@ -27,7 +27,7 @@ public class NoticiaController {
 		noticia.setId(UUID.randomUUID().toString());
 		bancoDados.persistirNoticia(noticia);
 		System.out.println(noticia);
-		return "index";
+		return "redirect:/listarNoticias";
 	}
 
 	@GetMapping(value = "/listarNoticias")
@@ -44,15 +44,15 @@ public class NoticiaController {
 		bancoDados.removerDocumento(idDocumento);
 		return "index";
 	}
-	
+
 	@GetMapping(value = "/editarNoticia")
 	public String exibirPaginaparaEditarNoticia(@RequestParam String idNoticia, Model model) {
 		Noticia noticia = bancoDados.localizarNoticia(idNoticia);
 		model.addAttribute("noticia", noticia);
 		return "editarNoticia";
-		
+
 	}
-	
+
 	@PostMapping(value = "/editarNoticia")
 	public String editarNoticia(Noticia noticiaAtualizada, @RequestParam String idNoticia, Model model) {
 		String id = noticiaAtualizada.getId();

@@ -17,11 +17,11 @@ public class BancoDados {
 	public List<Noticia> listarNoticia() {
 		return noticias;
 	}
-	
+
 	public Noticia localizarNoticia(String id) {
 		Noticia noticiaLocalizada = null;
 		for (Noticia noticia : noticias) {
-			if(noticia.getId().equals(id)) {
+			if (noticia.getId().equals(id)) {
 				noticiaLocalizada = noticia;
 			}
 		}
