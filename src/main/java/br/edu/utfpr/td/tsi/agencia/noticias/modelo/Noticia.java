@@ -2,9 +2,12 @@ package br.edu.utfpr.td.tsi.agencia.noticias.modelo;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Noticia {
 
 	private String id;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCriacao;
 	private String titulo;
 	private String assunto;

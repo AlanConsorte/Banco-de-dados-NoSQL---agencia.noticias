@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cadastrar Notícia</title>
+	<title>Cadastrar Autor</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -33,9 +33,7 @@
 			margin-top: 10px;
 		}
 
-		input,
-		textarea,
-		select {
+		input {
 			width: 100%;
 			padding: 10px;
 			margin-top: 5px;
@@ -45,15 +43,13 @@
 			color: #fff;
 		}
 
-		input:focus,
-		textarea:focus,
-		select:focus {
+		input:focus {
 			outline: none;
 			box-shadow: 0 0 8px red;
 		}
 
 		.btn-submit {
-			margin-top: 20px;
+			margin-top: 25px;
 			background: #cc0000;
 			border: none;
 			padding: 12px;
@@ -84,36 +80,24 @@
 		<div class="form-box">
 			<a class="voltar" th:href="@{/}">⬅ Voltar</a>
 
+			<h2>📝 Cadastrar Autor</h2>
 
-			<h2>➕ Cadastrar Nova Notícia</h2>
+			<form th:action="@{/autor/salvar}" method="POST" th:object="${autor}">
 
-			<form method="POST" th:action="@{/cadastrarNoticias}">
+				<label>Nome do autor:</label>
+				<input type="text" th:field="*{nome}" placeholder="Digite o nome completo" />
 
-				<label>Autor:</label>
-				<select name="autor.id" required>
-					<option value="" disabled selected>Selecione um autor cadastrado</option>
-					<option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nome + ' - ' + autor.email}"></option>
-				</select>
+				<label>E-mail:</label>
+				<input type="email" th:field="*{email}" placeholder="exemplo@email.com" />
 
-				<label>Data de Criação:</label>
-				<input type="date" name="dataCriacao" />
+				<label>Data de Nascimento:</label>
+				<input type="date" th:field="*{dataNascimento}" />
 
-				<label>Título:</label>
-				<input type="text" name="titulo" />
-
-				<label>Assunto:</label>
-				<textarea name="assunto" rows="3"></textarea>
-
-				<label>Conteúdo da notícia:</label>
-				<textarea name="conteudo" rows="10"></textarea>
-
-				<input type="submit" value="Cadastrar" class="btn-submit" />
+				<input type="submit" value="Cadastrar Autor" class="btn-submit" />
 
 			</form>
 		</div>
-
 	</div>
 
 </body>
-
 </html>

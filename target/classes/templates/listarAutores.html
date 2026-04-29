@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Notícias Cadastradas</title>
+	<title>Autores Cadastrados</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -117,38 +117,36 @@
 	<div class="container">
 		<div class="table-box">
 
-			<h1>Notícias cadastradas</h1>
+			<h1>Autores cadastrados</h1>
 
-			<a th:href="@{/cadastrarNoticias}" class="btn btn-nova">
-				➕ Nova Notícia
+			<a th:href="@{/cadastrarAutor}" class="btn btn-nova">
+				➕ Novo Autor
 			</a>
 
 			<table>
 				<tr>
 					<th>ID</th>
-					<th>Autor</th>
-					<th>Título</th>
-					<th>Assunto</th>
-					<th>Conteúdo</th>
+					<th>Nome</th>
+					<th>E-mail</th>
+					<th>Data de Nascimento</th>
 					<th>Remover</th>
 					<th>Editar</th>
 				</tr>
 
-				<tr th:each="doc : ${noticias}">
-					<td th:text="${doc.id}"></td>
-					<td th:text="${doc.autor.nome}"></td>
-					<td th:text="${doc.titulo}"></td>
-					<td th:text="${doc.assunto}"></td>
-					<td th:text="${doc.conteudo}"></td>
+					<tr th:each="autor : ${autores}">
+					<td th:text="${autor.id}"></td>
+					<td th:text="${autor.nome}"></td>
+					<td th:text="${autor.email}"></td>
+					<td th:text="${autor.dataNascimento}"></td>
 
 					<td>
-						<a class="remover" th:href="@{removerNoticia(idDocumento=${doc.id})}">
+						<a class="remover" th:href="@{removerAutor(idAutor=${autor.id})}">
 							❌
 						</a>
 					</td>
 
 					<td>
-						<a class="editar" th:href="@{editarNoticia(idNoticia=${doc.id})}">
+						<a class="editar" th:href="@{editarAutor(idAutor=${autor.id})}">
 							✏️
 						</a>
 					</td>

@@ -34,7 +34,8 @@
 		}
 
 		input,
-		textarea {
+		textarea,
+		select {
 			width: 100%;
 			padding: 10px;
 			margin-top: 5px;
@@ -45,7 +46,8 @@
 		}
 
 		input:focus,
-		textarea:focus {
+		textarea:focus,
+		select:focus {
 			outline: none;
 			box-shadow: 0 0 8px red;
 		}
@@ -85,16 +87,16 @@
 
 			<h2>➕ Cadastrar Nova Notícia</h2>
 
-			<form method="POST" action="cadastrarNoticia">
+			<form method="POST" th:action="@{/cadastrarNoticias}">
 
-				<label>Nome do autor:</label>
-				<input type="text" name="autor.nome" />
+				<label>Autor:</label>
+				<select name="autor.id" required>
+					<option value="" disabled selected>Selecione um autor cadastrado</option>
+					<option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nome + ' - ' + autor.email}"></option>
+				</select>
 
-				<label>E-mail do autor:</label>
-				<input type="email" name="autor.email" />
-
-				<label>Data de nascimento do autor:</label>
-				<input type="date" name="autor.dataNascimento" />
+				<label>Data de Criação:</label>
+				<input type="date" name="dataCriacao" />
 
 				<label>Título:</label>
 				<input type="text" name="titulo" />

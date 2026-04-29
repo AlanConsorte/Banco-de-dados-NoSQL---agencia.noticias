@@ -52,7 +52,8 @@
 		}
 
 		input,
-		textarea {
+		textarea,
+		select {
 			width: 100%;
 			padding: 10px;
 			margin-top: 5px;
@@ -63,7 +64,8 @@
 		}
 
 		input:focus,
-		textarea:focus {
+		textarea:focus,
+		select:focus {
 			outline: none;
 			box-shadow: 0 0 8px red;
 		}
@@ -102,7 +104,7 @@
 			<a class="navbar-brand" th:href="@{/index}">📰 Portal de Notícias</a>
 
 			<div class="navbar-nav ms-auto">
-				<a class="nav-link" th:href="@{/cadastrarNoticia}">Cadastrar</a>
+				<a class="nav-link" th:href="@{/cadastrarNoticias}">Cadastrar</a>
 				<a class="nav-link" th:href="@{/listarNoticias}">Listar</a>
 			</div>
 		</div>
@@ -121,14 +123,11 @@
 
 				<input type="hidden" name="id" th:value="${noticia.id}">
 
-				<label>Nome do autor:</label>
-				<input type="text" name="autor.nome" th:value="${noticia.autor.nome}" />
-
-				<label>E-mail do autor:</label>
-				<input type="email" name="autor.email" th:value="${noticia.autor.email}" />
-
-				<label>Data de nascimento do autor:</label>
-				<input type="date" name="autor.dataNascimento" th:value="${noticia.autor.dataNascimento}" />
+				<label>Autor:</label>
+				<select name="autor.id" required>
+					<option value="" disabled>Selecione um autor</option>
+					<option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nome + ' - ' + autor.email}" th:selected="${autor.id == noticia.autor.id}"></option>
+				</select>
 
 				<label>Título:</label>
 				<input type="text" name="titulo" th:value="${noticia.titulo}" />

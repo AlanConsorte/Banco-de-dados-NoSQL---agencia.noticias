@@ -71,12 +71,20 @@
 		<div class="container-box">
 			<h1>📰 Portal de Notícias</h1>
 
-			<a href="cadastrarNoticia" class="btn btn-primary btn-custom">
+			<a th:href="@{/cadastrarAutor}" class="btn btn-primary btn-custom">
+				➕ Cadastrar novo autor
+			</a>
+
+			<a th:href="@{/cadastrarNoticias}" class="btn btn-primary btn-custom">
 				➕ Cadastrar nova notícia
 			</a>
 
-			<a href="listarNoticias" class="btn btn-success btn-custom">
+			<a th:href="@{/listarNoticias}" class="btn btn-success btn-custom">
 				📋 Listar notícias
+			</a>
+
+			<a th:href="@{/listarAutores}" class="btn btn-success btn-custom">
+				📋 Listar autores
 			</a>
 
 		</div>

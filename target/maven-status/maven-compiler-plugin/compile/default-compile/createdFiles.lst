@@ -1,0 +1,7 @@
+br\edu\utfpr\td\tsi\agencia\noticias\persistencia\BancoDados.class
+br\edu\utfpr\td\tsi\agencia\noticias\controle\IndexController.class
+br\edu\utfpr\td\tsi\agencia\noticias\controle\AutorController.class
+br\edu\utfpr\td\tsi\agencia\noticias\Main.class
+br\edu\utfpr\td\tsi\agencia\noticias\modelo\Noticia.class
+br\edu\utfpr\td\tsi\agencia\noticias\modelo\Autor.class
+br\edu\utfpr\td\tsi\agencia\noticias\controle\NoticiaController.class
