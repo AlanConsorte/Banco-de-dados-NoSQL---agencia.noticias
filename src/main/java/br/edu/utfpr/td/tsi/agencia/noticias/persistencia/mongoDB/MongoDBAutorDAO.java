@@ -1,4 +1,4 @@
-package br.edu.utfpr.td.tsi.agencia.noticias.persistencia;
+package br.edu.utfpr.td.tsi.agencia.noticias.persistencia.mongoDB;
 
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -18,6 +18,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import br.edu.utfpr.td.tsi.agencia.noticias.modelo.Autor;
+import br.edu.utfpr.td.tsi.agencia.noticias.persistencia.AutorDAO;
 
 @Component
 public class MongoDBAutorDAO implements AutorDAO {

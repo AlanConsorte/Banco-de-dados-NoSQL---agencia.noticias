@@ -1,8 +1,9 @@
-package br.edu.utfpr.td.tsi.agencia.noticias.persistencia;
+package br.edu.utfpr.td.tsi.agencia.noticias.persistencia.mySQL;
 
 import org.springframework.stereotype.Component;
 
 import br.edu.utfpr.td.tsi.agencia.noticias.modelo.Autor;
+import br.edu.utfpr.td.tsi.agencia.noticias.persistencia.AutorDAO;
 
 import java.util.List;
 
