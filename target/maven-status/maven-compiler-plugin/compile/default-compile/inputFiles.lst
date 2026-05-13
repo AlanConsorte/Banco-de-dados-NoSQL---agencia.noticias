@@ -4,4 +4,9 @@ C:\Users\Alan\Documents\GitHub\Banco-de-dados-NoSQL---agencia.noticias\src\main\
 C:\Users\Alan\Documents\GitHub\Banco-de-dados-NoSQL---agencia.noticias\src\main\java\br\edu\utfpr\td\tsi\agencia\noticias\Main.java
 C:\Users\Alan\Documents\GitHub\Banco-de-dados-NoSQL---agencia.noticias\src\main\java\br\edu\utfpr\td\tsi\agencia\noticias\modelo\Autor.java
 C:\Users\Alan\Documents\GitHub\Banco-de-dados-NoSQL---agencia.noticias\src\main\java\br\edu\utfpr\td\tsi\agencia\noticias\modelo\Noticia.java
+C:\Users\Alan\Documents\GitHub\Banco-de-dados-NoSQL---agencia.noticias\src\main\java\br\edu\utfpr\td\tsi\agencia\noticias\persistencia\AutorDAO.java
 C:\Users\Alan\Documents\GitHub\Banco-de-dados-NoSQL---agencia.noticias\src\main\java\br\edu\utfpr\td\tsi\agencia\noticias\persistencia\BancoDados.java
+C:\Users\Alan\Documents\GitHub\Banco-de-dados-NoSQL---agencia.noticias\src\main\java\br\edu\utfpr\td\tsi\agencia\noticias\persistencia\mongoDB\MongoDBAutorDAO.java
+C:\Users\Alan\Documents\GitHub\Banco-de-dados-NoSQL---agencia.noticias\src\main\java\br\edu\utfpr\td\tsi\agencia\noticias\persistencia\mongoDB\MongoDBNoticiaDAO.java
+C:\Users\Alan\Documents\GitHub\Banco-de-dados-NoSQL---agencia.noticias\src\main\java\br\edu\utfpr\td\tsi\agencia\noticias\persistencia\mySQL\MySQLAutorDAO.java
+C:\Users\Alan\Documents\GitHub\Banco-de-dados-NoSQL---agencia.noticias\src\main\java\br\edu\utfpr\td\tsi\agencia\noticias\persistencia\NoticiaDAO.java

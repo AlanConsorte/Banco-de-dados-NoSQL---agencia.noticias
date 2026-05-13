@@ -1,4 +1,4 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<bean id="MongoDBAutoDAO" primary="true" class="br.edu.utfpr.td.tsi.agencia.noticias.persistencia.mongoDB.MongoDBAutorDAO"/>
+<bean id="MongoDBAutorDAO" primary="true" class="br.edu.utfpr.td.tsi.agencia.noticias.persistencia.mongoDB.MongoDBAutorDAO"/>
 <bean id="MySqlAutorDAO" primary="false" class="br.edu.utfpr.td.tsi.agencia.noticias.persistencia.mySQL.MySQLAutorDAO"/>
 </beans>
