@@ -1,11 +1,14 @@
 package br.edu.utfpr.td.tsi.agencia.noticias.modelo;
 
 import java.time.LocalDate;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
+@Document(collection = "noticias")
 public class Noticia {
 
+	@Id
 	private String id;
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCriacao;
