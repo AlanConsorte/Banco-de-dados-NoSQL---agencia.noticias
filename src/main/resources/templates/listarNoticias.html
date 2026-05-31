@@ -123,12 +123,42 @@
 				➕ Nova Notícia
 			</a>
 
+			<div style="background:#222; padding:15px; border-radius:10px; margin-bottom:20px;">
+				<form method="GET" th:action="@{/listarNoticias}" style="display:flex; gap:10px; align-items:flex-end;">
+					<div style="flex:1;">
+						<label>Autor:</label>
+						<select name="autorId" style="width:100%; padding:8px; border-radius:5px; background:#111; color:#fff; border:1px solid #333;">
+							<option value="">Todos</option>
+							<option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nome}"></option>
+						</select>
+					</div>
+					<div style="flex:1;">
+						<label>Assunto:</label>
+						<select name="assuntoId" style="width:100%; padding:8px; border-radius:5px; background:#111; color:#fff; border:1px solid #333;">
+							<option value="">Todos</option>
+							<option th:each="assunto : ${assuntos}" th:value="${assunto.id}" th:text="${assunto.assunto}"></option>
+						</select>
+					</div>
+					<div style="flex:1;">
+						<label>Situação:</label>
+						<select name="situacao" style="width:100%; padding:8px; border-radius:5px; background:#111; color:#fff; border:1px solid #333;">
+							<option value="">Todas</option>
+							<option th:each="sit : ${situacoes}" th:value="${sit}" th:text="${sit.descricao}"></option>
+						</select>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-nova" style="margin-bottom:0;">🔍 Filtrar</button>
+					</div>
+				</form>
+			</div>
+
 			<table>
 				<tr>
 					<th>ID</th>
 					<th>Autor</th>
 					<th>Título</th>
 					<th>Assunto</th>
+					<th>Situação</th>
 					<th>Conteúdo</th>
 					<th>Remover</th>
 					<th>Editar</th>
@@ -136,9 +166,10 @@
 
 				<tr th:each="doc : ${noticias}">
 					<td th:text="${doc.id}"></td>
-					<td th:text="${doc.autor.nome}"></td>
+					<td th:text="${doc.autor != null ? doc.autor.nome : ''}"></td>
 					<td th:text="${doc.titulo}"></td>
-					<td th:text="${doc.assunto}"></td>
+					<td th:text="${doc.assuntoRelacionado != null ? doc.assuntoRelacionado.assunto : ''}"></td>
+					<td th:text="${doc.situacao != null ? doc.situacao.descricao : ''}"></td>
 					<td th:text="${doc.conteudo}"></td>
 
 					<td>

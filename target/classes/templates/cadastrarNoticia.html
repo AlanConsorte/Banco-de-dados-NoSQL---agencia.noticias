@@ -89,6 +89,8 @@
 
 			<form method="POST" th:action="@{/cadastrarNoticias}">
 
+				<div th:if="${erro != null}" class="alert alert-danger" style="background-color:#660000; color:white; padding:10px; border-radius:5px; margin-bottom:15px;" th:text="${erro}"></div>
+
 				<label>Autor:</label>
 				<select name="autor.id" required>
 					<option value="" disabled selected>Selecione um autor cadastrado</option>
@@ -102,7 +104,16 @@
 				<input type="text" name="titulo" />
 
 				<label>Assunto:</label>
-				<textarea name="assunto" rows="3"></textarea>
+				<select name="assuntoRelacionado.id" required>
+					<option value="" disabled selected>Selecione um assunto cadastrado</option>
+					<option th:each="assunto : ${assuntos}" th:value="${assunto.id}" th:text="${assunto.assunto}"></option>
+				</select>
+
+				<label>Situação:</label>
+				<select name="situacao" required>
+					<option value="" disabled selected>Selecione a situação inicial</option>
+					<option th:each="sit : ${situacoes}" th:value="${sit}" th:text="${sit.descricao}"></option>
+				</select>
 
 				<label>Conteúdo da notícia:</label>
 				<textarea name="conteudo" rows="10"></textarea>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Editar Notícia</title>
+	<title>Editar Assunto</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -51,9 +51,7 @@
 			margin-top: 10px;
 		}
 
-		input,
-		textarea,
-		select {
+		input {
 			width: 100%;
 			padding: 10px;
 			margin-top: 5px;
@@ -63,9 +61,7 @@
 			color: #fff;
 		}
 
-		input:focus,
-		textarea:focus,
-		select:focus {
+		input:focus {
 			outline: none;
 			box-shadow: 0 0 8px red;
 		}
@@ -104,8 +100,8 @@
 			<a class="navbar-brand" th:href="@{/index}">📰 Portal de Notícias</a>
 
 			<div class="navbar-nav ms-auto">
-				<a class="nav-link" th:href="@{/cadastrarNoticias}">Cadastrar</a>
-				<a class="nav-link" th:href="@{/listarNoticias}">Listar</a>
+				<a class="nav-link" th:href="@{/cadastrarAssunto}">Cadastrar</a>
+				<a class="nav-link" th:href="@{/listarAssuntos}">Listar</a>
 			</div>
 		</div>
 
@@ -115,38 +111,16 @@
 	<div class="container">
 		<div class="form-box">
 
-			<a th:href="@{/listarNoticias}" class="btn-voltar">⬅ Voltar</a>
+			<a th:href="@{/listarAssuntos}" class="btn-voltar">⬅ Voltar</a>
 
-			<h1>✏️ Editar notícia</h1>
+			<h1>✏️ Editar assunto</h1>
 
-			<form method="POST" th:action="@{editarNoticia(idNoticia=${noticia.id})}">
+			<form method="POST" th:action="@{editarAssunto}">
 
-				<input type="hidden" name="id" th:value="${noticia.id}">
+				<input type="hidden" name="id" th:value="${assunto.id}">
 
-				<label>Autor:</label>
-				<select name="autor.id" required>
-					<option value="" disabled>Selecione um autor</option>
-					<option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nome + ' - ' + autor.email}" th:selected="${autor.id == noticia.autor.id}"></option>
-				</select>
-
-				<label>Título:</label>
-				<input type="text" name="titulo" th:value="${noticia.titulo}" />
-
-				<label>Assunto:</label>
-				<select name="assuntoRelacionado.id" required>
-					<option value="" disabled>Selecione um assunto cadastrado</option>
-					<option th:each="assunto : ${assuntos}" th:value="${assunto.id}" th:text="${assunto.assunto}"
-						th:selected="${noticia.assuntoRelacionado != null and noticia.assuntoRelacionado.id == assunto.id}"></option>
-				</select>
-
-				<label>Situação:</label>
-				<select name="situacao" required>
-					<option value="" disabled>Selecione a situação</option>
-					<option th:each="sit : ${situacoes}" th:value="${sit}" th:text="${sit.descricao}" th:selected="${sit == noticia.situacao}"></option>
-				</select>
-
-				<label>Conteúdo da notícia:</label>
-				<textarea name="conteudo" rows="10" th:text="${noticia.conteudo}"></textarea>
+				<label>Nome do assunto:</label>
+				<input type="text" name="nomeAssunto" th:value="${assunto.nomeAssunto}" required />
 
 				<input type="submit" value="Salvar Alterações" class="btn-submit" />
 

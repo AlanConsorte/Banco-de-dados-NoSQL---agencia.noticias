@@ -133,7 +133,17 @@
 				<input type="text" name="titulo" th:value="${noticia.titulo}" />
 
 				<label>Assunto:</label>
-				<input type="text" name="assunto" th:value="${noticia.assunto}" />
+				<select name="assuntoRelacionado.id" required>
+					<option value="" disabled>Selecione um assunto cadastrado</option>
+					<option th:each="assunto : ${assuntos}" th:value="${assunto.id}" th:text="${assunto.assunto}"
+						th:selected="${noticia.assuntoRelacionado != null and noticia.assuntoRelacionado.id == assunto.id}"></option>
+				</select>
+
+				<label>Situação:</label>
+				<select name="situacao" required>
+					<option value="" disabled>Selecione a situação</option>
+					<option th:each="sit : ${situacoes}" th:value="${sit}" th:text="${sit.descricao}" th:selected="${sit == noticia.situacao}"></option>
+				</select>
 
 				<label>Conteúdo da notícia:</label>
 				<textarea name="conteudo" rows="10" th:text="${noticia.conteudo}"></textarea>
