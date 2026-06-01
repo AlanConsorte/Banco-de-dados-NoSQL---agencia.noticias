@@ -120,12 +120,13 @@
 			<h1>Autores cadastrados por Email</h1>
 
 			<div>
-				<form action="listarAutorPorEmail" method="POST">
-					<label>Email:</label> 
-					<input type="email" name="email"> 
-					<button type="submit">buscar</button>
-				</form>			
-			</div>
+			<form action="listarAutorPorEmail" method="POST">
+				<label>Email:</label> 
+				<input type="email" name="email"> 
+				<button type="submit">buscar</button>
+			</form>
+			
+		</div>
 
 			<a th:href="@{/cadastrarAutor}" class="btn btn-nova">
 				➕ Novo Autor
