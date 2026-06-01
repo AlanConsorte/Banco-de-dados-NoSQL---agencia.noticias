@@ -121,7 +121,7 @@ public class NoticiaController {
 	}
 
 	@GetMapping(value = "/removerNoticia")
-	public String removerDocumentos(@RequestParam("idDocumento") String idNoticia) {
+	public String removerDocumentos(@RequestParam String idNoticia) {
 		noticiaRepository.deleteById(idNoticia);
 		return "redirect:/listarNoticias";
 	}
