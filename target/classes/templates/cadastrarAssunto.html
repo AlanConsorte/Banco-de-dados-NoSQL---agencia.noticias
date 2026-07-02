@@ -85,7 +85,7 @@
 			<form th:action="@{/ReceberFormularioCadastrarAssunto}" method="POST" th:object="${assunto}">
 
 				<label>Nome do assunto:</label>
-				<input type="text" th:field="*{nomeAssunto}" placeholder="Digite o nome do assunto" required />
+				<input type="text" th:field="*{assunto}" placeholder="Digite o nome do assunto" required />
 
 				<input type="submit" value="Cadastrar Assunto" class="btn-submit" />
 

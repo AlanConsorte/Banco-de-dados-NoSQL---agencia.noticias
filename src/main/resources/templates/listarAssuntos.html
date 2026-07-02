@@ -138,7 +138,7 @@
 
 				<tr th:each="assunto : ${assuntos}">
 					<td th:text="${assunto.id}"></td>
-					<td th:text="${assunto.nomeAssunto}"></td>
+					<td th:text="${assunto.assunto}"></td>
 
 					<td>
 						<a class="remover" th:href="@{removerAssunto(idAssunto=${assunto.id})}">
