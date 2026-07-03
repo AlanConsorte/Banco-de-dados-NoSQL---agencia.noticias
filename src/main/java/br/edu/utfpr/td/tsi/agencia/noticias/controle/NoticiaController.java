@@ -19,6 +19,7 @@ import br.edu.utfpr.td.tsi.agencia.noticias.modelo.SituacaoNoticia;
 import br.edu.utfpr.td.tsi.agencia.noticias.persistencia.AutorRepository;
 import br.edu.utfpr.td.tsi.agencia.noticias.persistencia.AssuntosRepository;
 import br.edu.utfpr.td.tsi.agencia.noticias.persistencia.NoticiaRepository;
+import br.edu.utfpr.td.tsi.agencia.noticias.servico.SolrService;
 
 import org.springframework.data.mongodb.core.MongoTemplate;
 
@@ -27,6 +28,9 @@ public class NoticiaController {
 
 	@Autowired
 	private NoticiaRepository noticiaRepository;
+
+	@Autowired
+	private SolrService solrService;
 
 	@Autowired
 	private AutorRepository autorRepository;
@@ -87,6 +91,7 @@ public class NoticiaController {
 
 		noticia.setId(UUID.randomUUID().toString());
 		noticiaRepository.save(noticia);
+		solrService.indexarNoticia(noticia);
 		return "redirect:/listarNoticias";
 	}
 
@@ -95,8 +100,21 @@ public class NoticiaController {
 			@RequestParam(required = false) String autorId,
 			@RequestParam(required = false) String assuntoId,
 			@RequestParam(required = false) SituacaoNoticia situacao,
+			@RequestParam(required = false) String termo,
 			Model model) {
-		List<Noticia> noticias = noticiaRepository.findAll();
+		
+		Iterable<Noticia> noticias;
+		if (termo != null && !termo.trim().isEmpty()) {
+			List<String> ids = solrService.buscarIdsPorTermo(termo);
+			if (ids.isEmpty()) {
+				noticias = new ArrayList<>();
+			} else {
+				noticias = noticiaRepository.findAllById(ids);
+			}
+		} else {
+			noticias = noticiaRepository.findAll();
+		}
+
 		List<Noticia> filtered = new ArrayList<>();
 
 		for (Noticia n : noticias) {
@@ -117,12 +135,14 @@ public class NoticiaController {
 		model.addAttribute("autores", autorRepository.findAll());
 		model.addAttribute("assuntos", assuntoRepository.findAll());
 		model.addAttribute("situacoes", SituacaoNoticia.values());
+		model.addAttribute("termo", termo);
 		return "listarNoticias";
 	}
 
 	@GetMapping(value = "/removerNoticia")
-	public String removerDocumentos(@RequestParam("idDocumento") String idNoticia) {
+	public String removerDocumentos(@RequestParam String idNoticia) {
 		noticiaRepository.deleteById(idNoticia);
+		solrService.deletarNoticia(idNoticia);
 		return "redirect:/listarNoticias";
 	}
 
@@ -165,6 +185,7 @@ public class NoticiaController {
 		}
 		
 		noticiaRepository.save(noticia);
+		solrService.indexarNoticia(noticia);
 		return "redirect:/listarNoticias";
 	}
 }

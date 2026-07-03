@@ -126,24 +126,28 @@
 			<div style="background:#222; padding:15px; border-radius:10px; margin-bottom:20px;">
 				<form method="GET" th:action="@{/listarNoticias}" style="display:flex; gap:10px; align-items:flex-end;">
 					<div style="flex:1;">
+						<label>Buscar no Conteúdo (Solr):</label>
+						<input type="text" name="termo" th:value="${termo}" placeholder="Pesquisar por termos..." style="width:100%; padding:6px 12px; border-radius:5px; background:#111; color:#fff; border:1px solid #333;" />
+					</div>
+					<div style="flex:1;">
 						<label>Autor:</label>
 						<select name="autorId" style="width:100%; padding:8px; border-radius:5px; background:#111; color:#fff; border:1px solid #333;">
 							<option value="">Todos</option>
-							<option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nome}"></option>
+							<option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nome}" th:selected="${param.autorId != null && param.autorId[0] == autor.id}"></option>
 						</select>
 					</div>
 					<div style="flex:1;">
 						<label>Assunto:</label>
 						<select name="assuntoId" style="width:100%; padding:8px; border-radius:5px; background:#111; color:#fff; border:1px solid #333;">
 							<option value="">Todos</option>
-							<option th:each="assunto : ${assuntos}" th:value="${assunto.id}" th:text="${assunto.assunto}"></option>
+							<option th:each="assunto : ${assuntos}" th:value="${assunto.id}" th:text="${assunto.assunto}" th:selected="${param.assuntoId != null && param.assuntoId[0] == assunto.id}"></option>
 						</select>
 					</div>
 					<div style="flex:1;">
 						<label>Situação:</label>
 						<select name="situacao" style="width:100%; padding:8px; border-radius:5px; background:#111; color:#fff; border:1px solid #333;">
 							<option value="">Todas</option>
-							<option th:each="sit : ${situacoes}" th:value="${sit}" th:text="${sit.descricao}"></option>
+							<option th:each="sit : ${situacoes}" th:value="${sit}" th:text="${sit.descricao}" th:selected="${param.situacao != null && param.situacao[0] == sit.name()}"></option>
 						</select>
 					</div>
 					<div>
@@ -173,7 +177,7 @@
 					<td th:text="${doc.conteudo}"></td>
 
 					<td>
-						<a class="remover" th:href="@{removerNoticia(idDocumento=${doc.id})}">
+						<a class="remover" th:href="@{removerNoticia(idNoticia=${doc.id})}">
 							❌
 						</a>
 					</td>
